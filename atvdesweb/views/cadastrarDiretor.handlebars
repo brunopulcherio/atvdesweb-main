@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastrar Diretor</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+</head>
+
+<body>
+
+    <nav class="container">
+        <ul>
+            <li><strong>Catálogo de Filmes</strong></li>
+        </ul>
+
+        <ul>
+            <li><a href="/">Início</a></li>
+            <li><a href="/filmes">Filmes</a></li>
+            <li><a href="/diretores">Diretores</a></li>
+            <li><a href="/artistas">Artistas</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+
+        <article>
+
+            <header>
+                <h1>Cadastrar Diretor</h1>
+            </header>
+
+            <form action="/diretor/cadastrar" method="POST">
+
+                <label>
+                    Nome:
+                    <input type="text" name="nome" placeholder="Digite o nome" required>
+                </label>
+
+                <label>
+                    Ano de nascimento:
+                    <input type="number" name="anoNascimento" placeholder="Ex: 1980" required>
+                </label>
+
+                <label>
+                    Nacionalidade:
+                    <input type="text" name="nacionalidade" placeholder="Digite a nacionalidade" required>
+                </label>
+
+                <input type="submit" value="Salvar">
+
+            </form>
+
+        </article>
+
+    </main>
+
+</body>
+</html>

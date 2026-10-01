@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Detalhar Diretor</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+</head>
+
+<body>
+
+    <nav class="container">
+
+        <ul>
+            <li>
+                <strong>Catálogo de Filmes</strong>
+            </li>
+        </ul>
+
+        <ul>
+            <li><a href="/">Início</a></li>
+            <li><a href="/filmes">Filmes</a></li>
+            <li><a href="/diretores">Diretores</a></li>
+            <li><a href="/artistas">Artistas</a></li>
+        </ul>
+
+    </nav>
+
+
+    <main class="container">
+
+        <article>
+
+            <h1>{{diretor.nome}}</h1>
+
+            <p>
+                <strong>Ano de nascimento:</strong>
+                {{diretor.anoNascimento}}
+            </p>
+
+            <p>
+                <strong>Nacionalidade:</strong>
+                {{diretor.nacionalidade}}
+            </p>
+
+        </article>
+
+
+        <details open>
+
+            <summary>Filmes dirigidos</summary>
+
+            {{#if diretor.filmes.length}}
+
+            <ul>
+
+                {{#each diretor.filmes}}
+
+                <li>
+                    <a href="/filmes/{{this.id}}">
+                        {{this.nome}}
+                    </a>
+                    - {{this.ano}}
+                </li>
+
+                {{/each}}
+
+            </ul>
+
+            {{else}}
+
+            <p>
+                Este diretor ainda não possui filmes cadastrados.
+            </p>
+
+            {{/if}}
+
+        </details>
+
+
+        <br>
+
+        <a href="/diretores" role="button" class="secondary">
+            Voltar para diretores
+        </a>
+
+    </main>
+
+</body>
+
+</html>

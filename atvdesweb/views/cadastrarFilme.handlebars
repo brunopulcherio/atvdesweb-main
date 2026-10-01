@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastrar Filme</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+</head>
+
+<body>
+
+    <nav class="container">
+        <ul>
+            <li><strong>Catálogo de Filmes</strong></li>
+        </ul>
+
+        <ul>
+            <li><a href="/">Início</a></li>
+            <li><a href="/filmes">Filmes</a></li>
+            <li><a href="/diretores">Diretores</a></li>
+            <li><a href="/artistas">Artistas</a></li>
+        </ul>
+    </nav>
+
+
+    <main class="container">
+
+        <article>
+
+            <header>
+                <h1>Cadastrar Filme</h1>
+            </header>
+
+
+            <form action="/filme/cadastrar" method="POST">
+
+                <label>
+                    Nome:
+                    <input type="text" name="nome" placeholder="Digite o nome do filme" required>
+                </label>
+
+
+                <label>
+                    Ano:
+                    <input type="number" name="ano" placeholder="Ex: 2025" required>
+                </label>
+
+
+                <label>
+                    Diretor:
+
+                    <select name="diretorId" required>
+
+                        <option value="">
+                            Selecione um diretor
+                        </option>
+
+                        {{#each diretores}}
+                            <option value="{{id}}">
+                                {{nome}}
+                            </option>
+                        {{/each}}
+
+                    </select>
+
+                </label>
+
+
+                <label>
+                    Artistas:
+
+                    <select name="artistas" multiple>
+
+                        {{#each artistas}}
+                            <option value="{{this.id}}">
+                                {{this.nome}}
+                            </option>
+                        {{/each}}
+
+                    </select>
+
+                </label>
+
+
+                <input type="submit" value="Salvar">
+
+            </form>
+
+        </article>
+
+    </main>
+
+</body>
+</html>
+

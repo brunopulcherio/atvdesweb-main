@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Diretores</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+</head>
+
+
+<body>
+
+    <nav class="container">
+
+        <ul>
+            <li>
+                <strong>Catálogo de Filmes</strong>
+            </li>
+        </ul>
+
+
+        <ul>
+            <li><a href="/">Início</a></li>
+            <li><a href="/filmes">Filmes</a></li>
+            <li><a href="/diretores">Diretores</a></li>
+            <li><a href="/artistas">Artistas</a></li>
+        </ul>
+
+    </nav>
+
+
+
+    <main class="container">
+
+        <h1>Diretores</h1>
+
+        <p>
+            Lista de diretores cadastrados no sistema.
+        </p>
+
+
+        <a href="/diretor/cadastrar" role="button">
+            + Cadastrar novo diretor
+        </a>
+
+
+        <br><br>
+
+
+        {{#if diretores.length}}
+
+        <article>
+
+            <ul>
+
+                {{#each diretores}}
+
+                <li>
+
+                    <strong>{{this.nome}}</strong>
+
+
+                    <br>
+
+
+                    <a href="/diretores/{{this.id}}" role="button">
+                        Detalhar
+                    </a>
+
+
+                    <a href="/diretor/{{this.id}}/editar" class="secondary" role="button">
+                        Editar
+                    </a>
+
+
+                    <form 
+                        action="/diretor/{{this.id}}/delete" 
+                        method="POST"
+                    >
+
+                        <input 
+                            type="hidden" 
+                            name="_method" 
+                            value="DELETE"
+                        >
+
+
+                        <button type="submit" class="contrast">
+                            Excluir
+                        </button>
+
+                    </form>
+
+
+                </li>
+
+
+                {{/each}}
+
+            </ul>
+
+        </article>
+
+
+        {{else}}
+
+
+        <article>
+            <p>
+                Nenhum diretor cadastrado.
+            </p>
+        </article>
+
+
+        {{/if}}
+
+
+    </main>
+
+
+</body>
+
+</html>

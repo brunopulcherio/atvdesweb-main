@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Detalhar Artista</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+
+</head>
+
+<body>
+
+    <nav class="container">
+
+        <ul>
+            <li>
+                <strong>Catálogo de Filmes</strong>
+            </li>
+        </ul>
+
+        <ul>
+            <li><a href="/">Início</a></li>
+            <li><a href="/filmes">Filmes</a></li>
+            <li><a href="/diretores">Diretores</a></li>
+            <li><a href="/artistas">Artistas</a></li>
+        </ul>
+
+    </nav>
+
+
+    <main class="container">
+
+        <article>
+
+            <h1>{{artista.nome}}</h1>
+
+            <p>
+                <strong>Nome artístico:</strong>
+                {{artista.nomeArtistico}}
+            </p>
+
+            <p>
+                <strong>Ano de nascimento:</strong>
+                {{artista.anoNascimento}}
+            </p>
+
+        </article>
+
+
+        <details open>
+
+            <summary>Filmes</summary>
+
+            {{#if artista.filmes.length}}
+
+            <ul>
+
+                {{#each artista.filmes}}
+
+                <li>
+
+                    <a href="/filmes/{{this.id}}">
+                        {{this.nome}}
+                    </a>
+                    - {{this.ano}}
+
+                </li>
+
+                {{/each}}
+
+            </ul>
+
+            {{else}}
+
+            <p>
+                Este artista ainda não possui filmes cadastrados.
+            </p>
+
+            {{/if}}
+
+        </details>
+
+
+        <br>
+
+        <a href="/artistas" role="button" class="secondary">
+            Voltar para artistas
+        </a>
+
+    </main>
+
+</body>
+
+</html>

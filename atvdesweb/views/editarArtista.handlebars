@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Editar Artista</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+</head>
+
+<body>
+
+    <nav class="container">
+
+        <ul>
+            <li>
+                <strong>Catálogo de Filmes</strong>
+            </li>
+        </ul>
+
+        <ul>
+            <li><a href="/">Início</a></li>
+            <li><a href="/filmes">Filmes</a></li>
+            <li><a href="/diretores">Diretores</a></li>
+            <li><a href="/artistas">Artistas</a></li>
+        </ul>
+
+    </nav>
+
+
+    <main class="container">
+
+        <article>
+
+            <h1>Editar Artista</h1>
+
+            <form action="/artista/{{artista.id}}/editar" method="POST">
+
+                <input
+                    type="hidden"
+                    name="_method"
+                    value="PUT"
+                >
+
+
+                <label>
+                    Nome:
+                    <input
+                        type="text"
+                        name="nome"
+                        value="{{artista.nome}}"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    Ano de nascimento:
+                    <input
+                        type="number"
+                        name="anoNascimento"
+                        value="{{artista.anoNascimento}}"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    Nome artístico:
+                    <input
+                        type="text"
+                        name="nomeArtistico"
+                        value="{{artista.nomeArtistico}}"
+                        required
+                    >
+                </label>
+
+
+                <input
+                    type="submit"
+                    value="Salvar alterações"
+                >
+
+            </form>
+
+        </article>
+
+
+        <a href="/artistas" role="button" class="secondary">
+            Voltar para artistas
+        </a>
+
+    </main>
+
+</body>
+
+</html>

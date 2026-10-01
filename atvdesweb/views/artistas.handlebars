@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Artistas</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+</head>
+
+<body>
+
+    <nav class="container">
+
+        <ul>
+            <li>
+                <strong>Catálogo de Filmes</strong>
+            </li>
+        </ul>
+
+        <ul>
+            <li><a href="/">Início</a></li>
+            <li><a href="/filmes">Filmes</a></li>
+            <li><a href="/diretores">Diretores</a></li>
+            <li><a href="/artistas">Artistas</a></li>
+        </ul>
+
+    </nav>
+
+
+    <main class="container">
+
+        <h1>Artistas</h1>
+
+        <p>
+            Lista de artistas cadastrados no sistema.
+        </p>
+
+
+        <a href="/artista/cadastrar" role="button">
+            + Cadastrar novo artista
+        </a>
+
+
+        <br><br>
+
+
+        <details class="dropdown">
+
+            <summary>
+                Acessar outras páginas
+            </summary>
+
+            <ul>
+                <li>
+                    <a href="/filmes">Filmes</a>
+                </li>
+
+                <li>
+                    <a href="/diretores">Diretores</a>
+                </li>
+
+                <li>
+                    <a href="/artistas">Artistas</a>
+                </li>
+            </ul>
+
+        </details>
+
+
+        <br>
+
+
+        {{#if artistas.length}}
+
+        <article>
+
+            <h3>Artistas cadastrados</h3>
+
+            <ul>
+
+                {{#each artistas}}
+
+                <li>
+
+                    <strong>{{this.nome}}</strong>
+
+                    <br>
+
+                    <a
+                        href="/artistas/{{this.id}}"
+                        role="button"
+                    >
+                        Detalhar
+                    </a>
+
+
+                    <a
+                        href="/artista/{{this.id}}/editar"
+                        class="secondary"
+                        role="button"
+                    >
+                        Editar
+                    </a>
+
+
+                    <form
+                        action="/artista/{{this.id}}/delete"
+                        method="POST"
+                    >
+
+                        <input
+                            type="hidden"
+                            name="_method"
+                            value="DELETE"
+                        >
+
+                        <button
+                            type="submit"
+                            class="contrast"
+                        >
+                            Excluir
+                        </button>
+
+                    </form>
+
+                </li>
+
+                {{/each}}
+
+            </ul>
+
+        </article>
+
+
+        {{else}}
+
+        <article>
+
+            <p>
+                Nenhum artista cadastrado.
+            </p>
+
+        </article>
+
+        {{/if}}
+
+
+    </main>
+
+</body>
+
+</html>

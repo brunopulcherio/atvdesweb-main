@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Detalhar Filme</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+</head>
+
+<body>
+
+    <nav class="container">
+
+        <ul>
+            <li>
+                <strong>Catálogo de Filmes</strong>
+            </li>
+        </ul>
+
+        <ul>
+            <li><a href="/">Início</a></li>
+            <li><a href="/filmes">Filmes</a></li>
+            <li><a href="/diretores">Diretores</a></li>
+            <li><a href="/artistas">Artistas</a></li>
+        </ul>
+
+    </nav>
+
+
+    <main class="container">
+
+        <article>
+
+            <h1>{{filme.nome}}</h1>
+
+            <p>
+                <strong>Ano:</strong> {{filme.ano}}
+            </p>
+
+        </article>
+
+
+        <details open>
+
+            <summary>Diretor</summary>
+
+            {{#if filme.diretor}}
+
+            <p>
+                <strong>Nome:</strong>
+                {{filme.diretor.nome}}
+            </p>
+
+            <p>
+                <strong>Ano de nascimento:</strong>
+                {{filme.diretor.anoNascimento}}
+            </p>
+
+            <p>
+                <strong>Nacionalidade:</strong>
+                {{filme.diretor.nacionalidade}}
+            </p>
+
+            {{else}}
+
+            <p>
+                Diretor não cadastrado.
+            </p>
+
+            {{/if}}
+
+        </details>
+
+
+        <details>
+
+            <summary>Artistas</summary>
+
+            {{#if filme.artistas.length}}
+
+            <ul>
+
+                {{#each filme.artistas}}
+
+                <li>
+
+                    {{this.nome}}
+
+                    {{#if this.nomeArtistico}}
+                        ({{this.nomeArtistico}})
+                    {{/if}}
+
+                </li>
+
+                {{/each}}
+
+            </ul>
+
+            {{else}}
+
+            <p>
+                Nenhum artista cadastrado.
+            </p>
+
+            {{/if}}
+
+        </details>
+
+
+        <details>
+
+            <summary>Ficha Técnica</summary>
+
+            {{#if filme.fichaTecnica}}
+
+            <p>
+                <strong>Duração:</strong>
+                {{filme.fichaTecnica.duracaoMinutos}} minutos
+            </p>
+
+            <p>
+                <strong>Orçamento:</strong>
+                R$ {{filme.fichaTecnica.orcamento}}
+            </p>
+
+            <p>
+                <strong>Bilheteria:</strong>
+                R$ {{filme.fichaTecnica.bilheteria}}
+            </p>
+
+            {{else}}
+
+            <p>
+                Ficha técnica não cadastrada.
+            </p>
+
+            <a
+                href="/filme/{{filme.id}}/ficha-tecnica/cadastrar"
+                role="button"
+            >
+                Cadastrar ficha técnica
+            </a>
+
+            {{/if}}
+
+        </details>
+
+
+        <br>
+
+        <a href="/filmes" role="button" class="secondary">
+            Voltar para filmes
+        </a>
+
+    </main>
+
+</body>
+
+</html>
